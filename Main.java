@@ -1,106 +1,45 @@
 public class Main {
-
-	public static void main(String[] args) {
 		
-		int info;
-		myList list1= new myList();
-		myList list2= new myList();
-		myList result= new myList();
+		public static void main(String[] args) {
+		lista l1 = new lista();
+		lista l2 = new lista();
+		l1.insert(1);
+		l1.insert(3);
+		l1.insert(4);
+		l1.insert(5);
+		l1.insert(7);
+		l1.print();
+		System.out.println();
+		l2.insert(2);
+		l2.insert(3);
+		l2.insert(4);
+		l2.insert(7);
+		l2.print();
+		System.out.println();
+		lista result1 = l1.getComunes(l2);
+		result1.print();
+		System.out.println();
 		
+		lista l3 = new lista();
+		lista l4 =new lista();
+		l3.insert(10);
+		l3.insert(8);
+		l3.insert(9);
+		l3.insert(13);
 		
-		//ejemplo de dos listas ordenadas 
-		System.out.println("lista ordenada");
-		info =2;
-		myList list3= new myList();
-		list3.insert(info);
-		info=4;
-		list3.insert(info);
-		info= 8;
-		list3.insert(info);
-		list3.print();
-		System.out.println("---");
-		myList list4 =new myList();
-		info =4;
-		list4.insert(info);
-		info =8;
-		list4.insert(info);
-		info=9;
-		list4.insert(info);
-		list4.print();
-		System.out.println("---");
-		myList result2 = new myList();
-		comparadorDeListas(list4, list3, result2);
+		l3.print();
+		System.out.println();
+		l4.insert(9);
+		l4.insert(8);
+		l4.insert(10);
+		l4.insert(5);
+		
+		l4.print();
+		System.out.println();
+		lista result2 = l3.getComunes(l4);
 		result2.print();
-		System.out.println("---");
-		//para medir el tiempo de ejecucion
-		CargarListaconCantElemRandom(list1,10);
-		System.out.println("cargar lista");
-		list1.print();
-		System.out.println("---");
-		CargarListaconCantElemRandom(list2,10);
-		list2.print();
-		System.out.println("---");
-		comparadorDeListas(list1, list2, result);
-		result.print();
-		System.out.println("---");
-		
-	}
-	//inicio de metodos
-	public static void insertOrd(myList result, int valor){
 
-		if(result.getFirst()==null){
-			result.insert(valor);
-			
-		}else{
-			Node cursor = result.getFirst();
-				if((int)cursor.getInfo()>=valor){
-					result.insert(valor);
-				}else{
-					Node aux = new Node(valor,null);
-					while(cursor.getNext()!=null && (int)cursor.getNext().getInfo()>valor){
-						cursor=cursor.getNext();
-					}
-					if(cursor.getNext()==null){
-						cursor.setNext(aux);
-					}else{
-						aux.setNext(cursor.getNext());
-						cursor.setNext(aux);
-					}
-					
-				}
-			
-		}
-		
-	
-		
-		
-		
-	}
-public static void comparadorDeListas(myList l1, myList l2, myList result){
-Node cursor1 = l1.getFirst();
 
-		while(cursor1!=null){
-			if(l2.search(cursor1.getInfo())){
-				int valor =(int)cursor1.getInfo();
-				if(!result.search(cursor1.getInfo())){
-					insertOrd(result,valor);
-				}
-				cursor1=cursor1.getNext();
-				
-			}else{
-				cursor1=cursor1.getNext();
-			}
-		}
 	}
-
-public static void CargarListaconCantElemRandom(myList list, int cantElem){
-	int cont=0;
-	while(cont<cantElem){
-		int valor = (int) (Math.random() * 20) + 1;
-		list.insert(valor);
-		cont++;
-	}
-}
-	
 
 }
